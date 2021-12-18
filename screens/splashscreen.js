@@ -5,11 +5,16 @@ import { Image, SafeAreaView, StyleSheet, View, Text, StatusBar } from "react-na
 
 const splash = ({ navigation }) => {
 
-
-
+    useEffect(() => {
+    setTimeout( () => {
+          navigation.navigate('login')
+       }
+        ,3000)
+}
+    )
 
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
             <Image
                 style={styles.tinyLogo}
                 source={{
@@ -18,7 +23,7 @@ const splash = ({ navigation }) => {
 
             />
             <Text style={styles.text}>React Native</Text>
-        </SafeAreaView>
+        </View>
     )
 
 

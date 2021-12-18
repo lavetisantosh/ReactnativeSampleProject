@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         borderRadius:10
       },
       buttonStyle : {
-          height: 50,
+          height: 45,
           width : '50%',
           backgroundColor: 'lightblue',
           fontSize : 12,
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
           textAlign : "center",
           justifyContent : 'center',
           marginTop : 50,
-          borderRadius : 20
+          borderRadius : 25
       }
     ,
     tinyLogo: {
