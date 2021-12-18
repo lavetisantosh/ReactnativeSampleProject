@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, ScrollView, Text, View,StyleSheet, FlatList} from "react-native";
+import { Button, ScrollView, Text, View,StyleSheet, FlatList, TouchableOpacity} from "react-native";
 import { getMoviesApi } from "./apifactory/APIFactory";
 
 
@@ -25,10 +25,11 @@ const HomeScreen = ({ navigation }) => {
                 keyExtractor={(item) => item.id}
                 data={data.users}
                 renderItem={({ item }) => (
-                    <View style = {styles.container1}>
+                    <TouchableOpacity style = {styles.container1}
+                    onPress={() => navigation.navigate('detail')}>
                     <Text style = {{fontSize: 25,fontWeight:"bold"}}>{item.name}</Text>
                     <Text style = {{fontSize: 18,marginTop:5}}>{item.work}</Text>
-                    </View>
+                    </TouchableOpacity>
                 )}/>
             </View>
     )
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
 
     container1 : {
         margin:10,
-        width: '100%',
+        width : 340,
         backgroundColor: 'lightblue',
         padding:15,
         borderRadius:10

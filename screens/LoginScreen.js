@@ -49,7 +49,6 @@ const LoginScreen = ({ navigation }) => {
             keyboardAppearance="default"
             keyboardType = "default"
           />
-
           <TouchableOpacity
            style = {styles.buttonStyle}
            onPress={() => validateCredentials()}>
