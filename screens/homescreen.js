@@ -5,16 +5,6 @@ import { getMoviesApi } from "./apifactory/APIFactory";
 
 const HomeScreen = ({ navigation }) => {
 
-    // const [people,setPeople] = useState([
-    //     {name: 'santosh', description:'Somethindfljsfljsfkjslsjfksjdfljfslfsjfkssdlfjsdfl',id:'1'},
-    //     {name: 'ajay', description:'Somethindfljsfljsfkjslsjfksjdfljfslfsjfkssdlfjsdfl',id:'2'},
-    //     {name: 'shiva', description:'Somethindfljsfljsfkjslsjfksjdfljfslfsjfkssdlfjsdfl',id:'3'},
-    //     {name: 'venki', description:'Somethindfljsfljsfkjslsjfksjdfljfslfsjfkssdlfjsdfl',id:'4'},
-    //     {name: 'ganesh',description:'Somethindfljsfljsfkjslsjfksjdfljfslfsjfkssdlfjsdfl', id:'5'},
-    //     {name: 'ravi',description:'Somethindfljsfljsfkjslsjfksjdfljfslfsjfkssdlfjsdfl', id:'6'},
-    //     {name: 'sai', description:'Somethindfljsfljsfkjslsjfksjdfljfslfsjfkssdlfjsdfl',id:'7'}
-    // ])
-
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     console.log(data)
