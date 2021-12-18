@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, ScrollView, Text, View, StyleSheet, TextInput, Alert } from "react-native";
+import { Button, ScrollView, Text, View, StyleSheet, TextInput, Alert,Image, TouchableOpacity } from "react-native";
 import HomeScreen from "./homescreen";
 
 
@@ -23,6 +23,13 @@ const LoginScreen = ({ navigation }) => {
 
     return (
             <View style={styles.container}>
+            <Image
+            style={styles.tinyLogo}
+            source={{
+                uri: 'https://reactnative.dev/img/tiny_logo.png',
+            }}
+
+        />
             <TextInput
             style={styles.input}
             onChangeText={onChangeName}
@@ -43,10 +50,11 @@ const LoginScreen = ({ navigation }) => {
             keyboardType = "default"
           />
 
-          <Button
-            style = {styles.buttonStyle}
-            title="Login"
-            onPress={() => validateCredentials()}/>
+          <TouchableOpacity
+           style = {styles.buttonStyle}
+           onPress={() => validateCredentials()}>
+          <Text style = {{fontSize:20, textAlign: 'center'}}>Login</Text>
+          </TouchableOpacity>
         
             </View>
     )
@@ -77,12 +85,21 @@ const styles = StyleSheet.create({
       buttonStyle : {
           height: 50,
           width : '50%',
-          color: 'lightblue',
+          backgroundColor: 'lightblue',
           fontSize : 12,
+          shadowColor: 'lightblack',
+          elevation : 5,
           textAlign : "center",
+          justifyContent : 'center',
           marginTop : 50,
           borderRadius : 20
       }
+    ,
+    tinyLogo: {
+      width: 200,
+      height: 200,
+      margin: 30
+  },
 })
 
 export default LoginScreen;
