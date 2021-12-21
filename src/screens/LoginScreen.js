@@ -12,11 +12,13 @@ const LoginScreen = ({ navigation }) => {
 
  const validateCredentials = () => {
   
-    if(username == 'Santosh' && password == 'Kumar'){
-      return  navigation.navigate('home')
-    } else {
-       return Alert.alert('Enter Correct Details')
-    }
+    // if(username == 'Santosh' && password == 'Kumar'){
+    //   return  navigation.navigate('home')
+    // } else {
+    //    return Alert.alert('Enter Correct Details')
+    // }
+
+    return  navigation.navigate('home')
     
   }
   

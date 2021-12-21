@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Button, ScrollView, Text, View,StyleSheet, FlatList, TouchableOpacity} from "react-native";
-import { getMoviesApi } from "./apifactory/APIFactory";
+import { Button, ScrollView, Text, View,StyleSheet, FlatList, TouchableOpacity, RefreshControl} from "react-native";
+import { getMoviesApi } from "../apifactory/APIFactory";
 
 
 const HomeScreen = ({ navigation }) => {
 
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
-    console.log(data)
+    //console.log(data)
+    const [refreshing, setRefresh] = useState(false)
 
     useEffect(() => {
         fetch('https://mocki.io/v1/69475ecc-8eb2-48a9-8b46-6a9d846dd238')
@@ -16,6 +17,11 @@ const HomeScreen = ({ navigation }) => {
           .catch((error) => console.error(error))
           .finally(() => setLoading(false));
       }, []);
+
+
+      const onRefresh = () => {
+         setRefresh(false)
+      }
 
 
     return (
@@ -30,7 +36,13 @@ const HomeScreen = ({ navigation }) => {
                     <Text style = {{fontSize: 25,fontWeight:"bold"}}>{item.name}</Text>
                     <Text style = {{fontSize: 18,marginTop:5}}>{item.work}</Text>
                     </TouchableOpacity>
-                )}/>
+                )}
+                refreshControl={
+                    <RefreshControl
+                    refreshing = {refreshing}
+                    onRefresh={onRefresh}
+                    colors={['#000']}/>
+                }/>
             </View>
     )
 }
