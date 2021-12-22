@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, ScrollView, Text, View, StyleSheet, TextInput, Alert,Image, TouchableOpacity } from "react-native";
+import { Button, ScrollView, Text, View, StyleSheet, TextInput, Alert,Image, TouchableOpacity, Modal } from "react-native";
 import HomeScreen from "./homescreen";
 
 
@@ -9,22 +9,45 @@ const LoginScreen = ({ navigation }) => {
 
     const [password, onChangePassword] =  useState(null);
   const [username, onChangeName] = useState(null);
+  const [showWaring, setShowWarning] = useState(false);
+  const [warningText, setWarningText] = useState('');
 
  const validateCredentials = () => {
   
-    // if(username == 'Santosh' && password == 'Kumar'){
-    //   return  navigation.navigate('home')
-    // } else {
-    //    return Alert.alert('Enter Correct Details')
-    // }
-
-    return  navigation.navigate('home')
+  if(username == null || password  == null){
+      setWarningText('Please enter the UserName and Password.');
+      setShowWarning(true);
+  } else  if(username == 'Santosh' && password == 'Kumar'){
+        navigation.navigate('home');
+    } else {
+      setWarningText('UserName and Password are incorrect.');
+      onChangeName(null);
+      onChangePassword(null);
+       setShowWarning(true);
+    }
     
   }
   
 
     return (
             <View style={styles.container}>
+            <Modal
+            visible={showWaring}
+            onRequestClose={()=>setShowWarning(false)}>
+            <View style = {styles.cardViewStyle}>
+            <View style = {styles.customDialog}>
+            <View>
+            <Text style = {styles.warning_text}>Warning</Text>
+            </View>
+            <Text style = {{fontSize : 15,marginTop : 20}}>{warningText}</Text>
+            <TouchableOpacity
+           style = {styles.dialogButton}
+           onPress={() => setShowWarning(false)}>
+          <Text style = {{fontSize:20, textAlign: 'center'}}>Okay</Text>
+          </TouchableOpacity>
+            </View>
+            </View>
+            </Modal>
             <Image
             style={styles.tinyLogo}
             source={{
@@ -64,7 +87,6 @@ const LoginScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
     container : {
         flex :1,
-        height: '100%',
         alignItems : 'center',
         margin : 10
     },
@@ -101,6 +123,37 @@ const styles = StyleSheet.create({
       height: 200,
       margin: 30
   },
+  cardViewStyle : {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems : "center",
+    backgroundColor : '#00000099'
+  },
+  customDialog : {
+    width : 250,
+    height : 200,
+    backgroundColor : '#fff',
+    alignItems: 'center',
+    borderRadius : 20
+  },
+  warning_text : {
+    fontSize : 30,
+    marginTop : 20,
+    color : 'red'
+  },
+  dialogButton : {
+    height: 35,
+    width : 100,
+    backgroundColor: 'lightgrey',
+    fontSize : 10,
+    shadowColor: 'lightblack',
+    elevation : 5,
+    textAlign : "center",
+    justifyContent : 'center',
+    marginTop : 30,
+    borderRadius : 25
+}
+
 })
 
 export default LoginScreen;
