@@ -4,9 +4,13 @@ const initialState = {
     movies : []
 }
 
-function useReducers(state = initialState,actions){
-  switch(actions.type){
+function userReducer(state = initialState,action){
+  switch(action.type){
       case GET_MOVIES  : 
-      return 
+      return {...state, movies : action.payload}
+      default : 
+      return state;
   }
 }
+
+export default userReducer;

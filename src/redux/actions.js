@@ -2,7 +2,6 @@ import { useDispatch } from "react-redux";
 
 const API_URL = 'https://mocki.io/v1/849787a8-3151-44e9-9679-f7012c57d5ee';
 const GET_MOVIES = 'GET_MOVIES';
-const dispatch = useDispatch();
 
 
 export const getMoviesApi = () => {
@@ -14,14 +13,14 @@ export const getMoviesApi = () => {
                     'Content-Type': 'application/json'
                 }
             });
-            const json = await result.json;
+            const json = await result.json();
             if (json) {
                 dispatch({
                     type : GET_MOVIES,
                     payload : json
-                })
+                });
             } else {
-                console.log('Unable to fetch')
+                console.log('Unable to fetch');
             }
         }
 

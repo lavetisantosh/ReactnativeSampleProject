@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, ScrollView, Text, View, StyleSheet, TextInput, Alert,Image, TouchableOpacity, Modal } from "react-native";
+import MyCustomButton from "../customcomponents/MyCustomButton";
 import HomeScreen from "./homescreen";
 
 
@@ -14,17 +15,19 @@ const LoginScreen = ({ navigation }) => {
 
  const validateCredentials = () => {
   
-  if(username == null || password  == null){
-      setWarningText('Please enter the UserName and Password.');
-      setShowWarning(true);
-  } else  if(username == 'Santosh' && password == 'Kumar'){
-        navigation.navigate('home');
-    } else {
-      setWarningText('UserName and Password are incorrect.');
-      onChangeName(null);
-      onChangePassword(null);
-       setShowWarning(true);
-    }
+  // if(username == null || password  == null){
+  //     setWarningText('Please enter the UserName and Password.');
+  //     setShowWarning(true);
+  // } else  if(username == 'Santosh' && password == 'Kumar'){
+  //       navigation.navigate('home');
+  //   } else {
+  //     setWarningText('UserName and Password are incorrect.');
+  //     onChangeName(null);
+  //     onChangePassword(null);
+  //      setShowWarning(true);
+  //   }
+
+    navigation.navigate('home');
     
   }
   
@@ -74,11 +77,9 @@ const LoginScreen = ({ navigation }) => {
             keyboardAppearance="default"
             keyboardType = "default"
           />
-          <TouchableOpacity
-           style = {styles.buttonStyle}
-           onPress={() => validateCredentials()}>
-          <Text style = {{fontSize:20, textAlign: 'center'}}>Login</Text>
-          </TouchableOpacity>
+          <MyCustomButton
+          onPressFunction = {validateCredentials}
+          title = {'Login'}/>
         
             </View>
     )

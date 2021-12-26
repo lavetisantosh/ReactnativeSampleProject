@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Button, ScrollView, Text, View,StyleSheet, FlatList, TouchableOpacity, RefreshControl} from "react-native";
+import { Button, ScrollView, Text, View,StyleSheet, FlatList, TouchableOpacity, RefreshControl, Alert, SafeAreaView} from "react-native";
 import { getMoviesApi } from "../apifactory/APIFactory";
+import CustomToolBar from "../customcomponents/CustomToolBar";
 
 
 const HomeScreen = ({ navigation }) => {
@@ -9,6 +10,10 @@ const HomeScreen = ({ navigation }) => {
     const [data, setData] = useState([]);
     //console.log(data)
     const [refreshing, setRefresh] = useState(false)
+
+    const goBack = () => {
+        navigation.navigate('login');
+    }
 
     useEffect(() => {
         fetch('https://mocki.io/v1/69475ecc-8eb2-48a9-8b46-6a9d846dd238')
@@ -25,7 +30,12 @@ const HomeScreen = ({ navigation }) => {
 
 
     return (
-            <View style={styles.container}>
+         
+            <SafeAreaView style={styles.container}>
+                <CustomToolBar
+                onPressFunction = {goBack}
+                title = {'Home Screen'}
+                />
                 <FlatList 
                 showsVerticalScrollIndicator = {false}
                 keyExtractor={(item) => item.id}
@@ -43,7 +53,7 @@ const HomeScreen = ({ navigation }) => {
                     onRefresh={onRefresh}
                     colors={['#000']}/>
                 }/>
-            </View>
+            </SafeAreaView>
     )
 }
 
@@ -53,7 +63,6 @@ const styles = StyleSheet.create({
         height: '100%',
         justifyContent: "center",
         alignItems: 'center',
-        margin : 10
     },
 
     container1 : {
